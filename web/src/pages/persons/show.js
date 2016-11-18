@@ -10,18 +10,24 @@ const Person = React.createClass({
     }
   },
   componentDidMount() {
-    xhr.get('http://127.0.0.1:4000/persons/' +
-      this.props.params.id, {
-        json: true
-      }, (err, response, person) => {
-        if (err) return console.log(err.message)
-        this.setState({person})
-      }
-    )
+    this.props.get(this.props.params.id, (err, person) => {
+      if (err) return console.log(err.message)
+      this.setState({person})
+    })
+    // xhr.get('http://127.0.0.1:4000/persons/' +
+    //   this.props.params.id, {
+    //     json: true
+    //   }, (err, response, person) => {
+    //     if (err) return console.log(err.message)
+    //     this.setState({person})
+    //   }
+    // )
   },
   handleRemove(e) {
     e.preventDefault()
-    if(confirm('Are you sure?') ) {
+    if(confirm('Are you sure?') )
+
+    {
       xhr.del('http://127.0.0.1:4000/persons/' + this.state.person.id, {
         json: this.state.person
       }, (err, response, body) => {

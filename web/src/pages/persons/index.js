@@ -1,6 +1,6 @@
 const React = require('react')
 const {Link} = require('react-router')
-const xhr = require('xhr')
+//const xhr = require('xhr')
 
 const Persons = React.createClass({
   getInitialState: function() {
@@ -9,12 +9,16 @@ const Persons = React.createClass({
     }
   },
   componentDidMount() {
-    xhr.get('http://127.0.0.1:4000/persons', {
-      json: true
-    }, (err, response, persons) => {
+    this.props.allDocs((err, persons) => {
       if (err) return console.log(err.message)
       this.setState({persons})
     })
+    // xhr.get('http://127.0.0.1:4000/persons', {
+    //   json: true
+    // }, (err, response, persons) => {
+    //   if (err) return console.log(err.message)
+    //   this.setState({persons})
+    // })
   },
   render() {
     //use tag template in Link
@@ -26,7 +30,7 @@ const Persons = React.createClass({
     return (
       <div>
         <h1>Persons</h1>
-        <Link to="/persons/new">NewPerson</Link> 
+        <Link to="/persons/new">NewPerson</Link>
         <ul>
           {this.state.persons.map(listPerson)}
         </ul>

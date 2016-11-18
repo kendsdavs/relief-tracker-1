@@ -69,6 +69,7 @@ const PersonForm = React.createClass({
           <div>
             <label style={labelStyle}>Last Name</label>
             <input
+              className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
               onChange={this.handleChange('lastName')}
               value={this.state.lastName}
               type="text" />

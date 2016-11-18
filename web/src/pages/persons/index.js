@@ -17,8 +17,12 @@ const Persons = React.createClass({
     })
   },
   render() {
+    //use tag template in Link
     const listPerson = person =>
-      <li>{person.firstName + ' ' + person.lastName}</li>
+      <li key={person.id}><Link to={`/persons/${person.id}/show`}>
+        {person.firstName + ' ' + person.lastName}
+        </Link>
+      </li>
     return (
       <div>
         <h1>Persons</h1>

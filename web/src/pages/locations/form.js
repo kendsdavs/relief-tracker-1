@@ -20,18 +20,42 @@ const LocationForm = React.createClass({
   },
   handleSubmit(e) {
     e.preventDefault()
-    xhr.post("http://127.0.0.1:4000/locations", {
-      json: this.state
-    }, (err, res, body) => {
-      if (err) return console.log(err.message)
-      this.setState({success: true})
-    })
+    if (this.state.id) {
+      xhr.put("http://127.0.0.1:4000/locations/" + this.state.id, {
+        json: this.state
+      }, (err, res, body) => {
+        if (err) return console.log(err.message)
+        this.setState({success: true})
+      } )
+    } else {
+      xhr.post("http://127.0.0.1:4000/locations", {
+        json: this.state
+      }, (err, res, body) => {
+        if (err) return console.log(err.message)
+        this.setState({success: true})
+      })
+    }
+  },
+  componentDidMount() {
+    if (this.props.params.id) {
+      xhr.get("http://127.0.0.1:4000/locations/" +
+        this.props.params.id, {
+        json: true
+      }, (err, res, location) => {
+        if(err) return console.log(err.message)
+        this.setState(location)
+      })
+    }
   },
   render() {
+    const formState = this.state.id ? "Edit" : "New"
     return (
       <div className="container">
-        {this.state.success ? <Redirect to="/locations" /> : null}
-        <h1>New Location Form</h1>
+        {this.state.success && this.state.id ?
+          <Redirect to={`/locations/${this.state.id}/show`} /> : null}
+        {this.state.success && !this.state.id ?
+          <Redirect to="/locations" /> : null}
+        <h1>{formState} Location Form</h1>
         <form onSubmit={this.handleSubmit}>
           <div>
             <label>Location</label>

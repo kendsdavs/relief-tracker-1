@@ -74,10 +74,10 @@
     },
     {
       "name": "Marseille, France",
-      "lat": "43.295135,",
+      "lat": "43.29",
       "lng": "5.379733",
       "success": false,
-      "id": 2
+      "id": "2"
     },
     {
       "name": "Beirut, Lebanon",

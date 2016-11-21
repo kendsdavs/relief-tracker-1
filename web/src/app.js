@@ -41,6 +41,7 @@ const App = React.createClass({
           <Match exactly pattern="/locations" component={Locations} />
           <Match pattern="/locations/:id/show" component={Location} />
           <Match exactly pattern="/locations/new" component={LocationForm} />
+          <Match pattern="/locations/:id/edit" component={LocationForm} />
           <Miss component={NoMatch} />
         </div>
       </BrowserRouter>

@@ -33,6 +33,8 @@ const App = React.createClass({
           <Match exactly pattern="/efforts" component={Efforts} />
           <Match pattern="/efforts/:id/show" component={Effort} />
           <Match exactly pattern="/efforts/new" component={EffortForm} />
+          <Match pattern="/efforts/:id/edit" component={EffortForm} />
+
           <Miss component={NoMatch} />
         </div>
       </BrowserRouter>

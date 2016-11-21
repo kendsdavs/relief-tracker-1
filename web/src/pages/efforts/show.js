@@ -22,6 +22,11 @@ const Effort = React.createClass({
       <div>
         <h3>{this.state.effort.name}</h3>
         <Link to="/efforts">Return</Link>
+        |
+        <Link to={`/efforts/${this.state.effort.id}/edit`}>
+          Edit Effort
+        </Link>
+
       </div>
     )
   }

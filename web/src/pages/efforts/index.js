@@ -22,14 +22,19 @@ const Efforts = React.createClass({
   },
   render() {
     const listEffort = effort =>
-      <li>{effort.name}</li>
+      <li><Link to={`efforts/${effort.id}/show`}>
+        {effort.name}
+      </Link></li>
     return (
-      <div>
+      <div className="container">
         <h1>Relief Efforts</h1>
         <ul>
           {this.state.efforts.map(listEffort)}
         </ul>
         <Link to="/">Home</Link>
+        |
+        |
+        <Link to="/efforts/new">Create New Effort</Link>
       </div>
     )
   }

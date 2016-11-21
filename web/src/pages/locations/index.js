@@ -29,6 +29,8 @@ const Locations = React.createClass({
           {this.state.locations.map(listLocations)}
         </ul>
         <Link to="/">Home</Link>
+        ||
+        <Link to="/locations/new">Add Location</Link>
       </div>
     )
   }

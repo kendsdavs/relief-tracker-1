@@ -79,6 +79,7 @@ const LocationForm = React.createClass({
               type="text" />
           </div>
           <button>Add</button>
+          <Link to="/locations">Cancel</Link>
         </form>
       </div>
     )

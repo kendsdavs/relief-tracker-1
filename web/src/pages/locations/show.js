@@ -24,6 +24,8 @@ const Location = React.createClass({
         <h3>{this.state.location.name}</h3>
         <h1>{this.state.location.lat + '/' + this.state.location.lng}</h1>
         <Link to="/locations">Return</Link>
+        ||
+        <Link to={`/locations/${this.state.location.id}/edit`}>Edit Location</Link>
       </div>
     )
   }

@@ -67,6 +67,7 @@
   ],
   "locations": [
     {
+      "id": 1,
       "name": "Gaborone, Botswana",
       "lat":"-24.607676",
       "lng": "25.903164"

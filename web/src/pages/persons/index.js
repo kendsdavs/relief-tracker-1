@@ -28,7 +28,7 @@ const Persons = React.createClass({
         </Link>
       </li>
     return (
-      <div>
+      <div className="container">
         <h1>Persons</h1>
         <Link to="/persons/new">NewPerson</Link>
         <ul>

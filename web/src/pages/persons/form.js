@@ -52,7 +52,7 @@ const PersonForm = React.createClass({
   render() {
     const formState = this.state.id ? 'Edit' : 'New'
     return (
-      <div>
+      <div className="container">
         { this.state.success && this.state.id ?
           <Redirect to={`/persons/${this.state.id}/show` }/> : null }
         { this.state.success && !this.state.id ?

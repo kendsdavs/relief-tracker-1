@@ -31,7 +31,7 @@ const Effort = React.createClass({
   },
   render() {
     return (
-      <div>
+      <div className="container">
         {this.state.removed ? <Redirect to="/efforts" /> : null}
         <h3>{this.state.effort.name}</h3>
         <Link to="/efforts">Return</Link>

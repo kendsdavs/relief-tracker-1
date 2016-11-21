@@ -18,7 +18,10 @@ const Locations = React.createClass({
   },
   render() {
     const listLocations = location =>
-      <li>{location.name + ' ' + location.lat + ' lat / ' + location.lng + ' lng'}</li>
+      <li key={location.id}><Link to={`/locations/${location.id}/show`}>
+      {location.name}
+        </Link>
+      </li>
     return (
       <div className="container">
         <h1>Locations</h1>

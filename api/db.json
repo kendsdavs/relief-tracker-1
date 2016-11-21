@@ -50,23 +50,6 @@
       "phase": "in-progress",
       "desc": "Provide water purifiers to small African villages",
       "organizationID": "1st Baptist Church of Mt.Pleasant"
-    },
-    {
-      "id": 2,
-      "name": "AIDs Care Project",
-      "phase": "complete",
-      "desc": "Provide medical care for persons infected with AIDS",
-      "organizationID": "Doctors Without Borders"
-    },
-    {
-      "name": "Syrian Refugee Welcom",
-      "phase": "",
-      "organizationID": "Citizens for World Help",
-      "desc": "Provide welcome kits for those displace from Syria",
-      "start": "2016-11-23",
-      "end": "2017-11-23",
-      "success": false,
-      "id": 3
     }
   ],
   "locations": []

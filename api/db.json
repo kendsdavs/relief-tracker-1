@@ -69,8 +69,22 @@
     {
       "id": 1,
       "name": "Gaborone, Botswana",
-      "lat":"-24.607676",
+      "lat": "-24.607676",
       "lng": "25.903164"
+    },
+    {
+      "name": "Marseille, France",
+      "lat": "43.295135,",
+      "lng": "5.379733",
+      "success": false,
+      "id": 2
+    },
+    {
+      "name": "Beirut, Lebanon",
+      "lat": "33.894982",
+      "lng": "35.501973",
+      "success": false,
+      "id": 3
     }
   ]
 }

@@ -45,12 +45,31 @@
   ],
   "efforts": [
     {
-      "id": 1,
       "name": "Africa Clean Water Project",
-      "phase": "in-progress",
+      "phase": "completed",
+      "organizationID": "1st Baptist Church of Mt.Pleasant",
       "desc": "Provide water purifiers to small African villages",
-      "organizationID": "1st Baptist Church of Mt.Pleasant"
+      "start": "",
+      "end": "",
+      "success": false,
+      "id": "1"
+    },
+    {
+      "name": "Syrian Welcome",
+      "phase": "",
+      "organizationID": "Boys and Girls Club",
+      "desc": "Provide welcome packets of supplies to displaced Syrians. ",
+      "start": "2016-11-23",
+      "end": "2017-11-23",
+      "success": false,
+      "id": "ryeoWslfx"
     }
   ],
-  "locations": []
+  "locations": [
+    {
+      "name": "Gaborone, Botswana",
+      "lat":"-24.607676",
+      "lng": "25.903164"
+    }
+  ]
 }

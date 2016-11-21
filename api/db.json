@@ -44,12 +44,14 @@
     }
   ],
   "efforts": [
-    { "name": "Africa Clean Water Project",
+    { "id": 1,
+      "name": "Africa Clean Water Project",
       "phase": "in-progress",
       "desc": "Provide water purifiers to small African villages",
       "organizationID": "1st Baptist Church of Mt.Pleasant"
     },
-    { "name": "AIDs Care Project",
+    { "id": 2,
+      "name": "AIDs Care Project",
       "phase": "complete",
       "desc": "Provide medical care for persons infected with AIDS",
       "organizationID": "Doctors Without Borders"

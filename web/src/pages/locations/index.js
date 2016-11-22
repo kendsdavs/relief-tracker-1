@@ -9,13 +9,24 @@ const Locations = React.createClass({
     }
   },
   componentDidMount() {
-    xhr.get("http://127.0.0.1:4000/locations", {
-      json: true
-    }, (err, res, locations) => {
-      if (err) return console.log(err.message)
-      this.setState({locations})
-    })
-  },
+  //   xhr.get("http://127.0.0.1:4000/locations", {
+  //     json: true
+  //   }, (err, res, locations) => {
+  //     if (err) return console.log(err.message)
+  //     this.setState({locations})
+  //   })
+  // },
+  this.props.allDocs((err, locations) => {
+    if (err) return console.log(err.message)
+    this.setState({locations})
+  })
+},
+  // xhr.get('http://127.0.0.1:4000/persons', {
+  //   json: true
+  // }, (err, response, persons) => {
+  //   if (err) return console.log(err.message)
+  //   this.setState({persons})
+  // })
   render() {
     const listLocations = location =>
       <li key={location.id}><Link to={`/locations/${location.id}/show`}>

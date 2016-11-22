@@ -2,6 +2,8 @@ const React = require('react')
 const {Link, Redirect} = require('react-router')
 const labelStyle = { display: 'block'}
 const xhr = require('xhr')
+const TextField = require('../../components/text-field')
+
 
 const EffortForm = React.createClass({
   getInitialState() {
@@ -12,6 +14,8 @@ const EffortForm = React.createClass({
       desc: '',
       start: '',
       end: '',
+      locations: [{ id: "-1", name:"Choose"}],
+      location_id:'',
       success: false
     }
   },
@@ -24,32 +28,37 @@ const EffortForm = React.createClass({
   },
   handleSubmit(e) {
     e.preventDefault()
+    let effort = [].concat(this.state)
+    delete effort.locations
+
     if(this.state.id) {
-      xhr.put("http://127.0.0.1:4000/efforts/" + this.state.id, {
-        json: this.state
-      }, (err, res, body) => {
-        if(err) return console.log(err.message)
+      this.props.put(effort, (err, effort) => {
+        if (err) return console.log(err.message)
         this.setState({success: true})
+
       })
     } else {
-      xhr.post("http://127.0.0.1:4000/efforts", {
-        json: this.state
-      }, (err, response, body) => {
-        if(err) return console.log(err.message)
+      this.props.post(effort, (err, effort) => {
+        if (err) return console.log(err.message)
         this.setState({success: true})
       })
     }
   },
   componentDidMount() {
     if (this.props.params.id) {
-      xhr.get('http://127.0.0.1:4000/efforts/' +
-        this.props.params.id, {json: true}, (err, res, effort) => {
-        if(err) return console.log(err.message)
+      this.props.get(this.props.params.id, (e, effort) => {
+        if(e) return console.log(e.message)
         this.setState(effort)
       })
     }
+      xhr.get('http://127.0.0.1:4000/locations', { json: true}, (err, res, body) => {
+        if(err) return console.log(err.message)
+        this.setState({locations: [].concat(this.state.locations, body)})
+      })
   },
   render() {
+    const locationList = location =>
+      <option value={location.id}>{location.name}</option>
     const formState = this.state.id ? 'Edit' : 'New'
     return (
       <div className="container">
@@ -68,7 +77,7 @@ const EffortForm = React.createClass({
           </div>
           <div>
             <label style={labelStyle}>Phase
-              <select value={this.state.phase} onChange={this.handleChange('phase')}>
+              <select value={this.state.value} onChange={this.handleChange('phase')}>
                 <option value="started">Started</option>
                 <option value="in-progress">In-Progress</option>
                 <option value="completed">Completed</option>
@@ -76,33 +85,57 @@ const EffortForm = React.createClass({
             </label>
           </div>
           <div>
+            <label style={labelStyle}>Location
+              <select value={this.state.location_id}
+                onChange={this.handleChange('location_id')}>
+                {this.state.locations.map(locationList)}
+              </select>
+            </label>
+          </div>
+          <TextField label="Organization Name"
+            type="text"
+            value={this.state.organizationID}
+            onChange={this.handleChange('organizationID')} />
+          {/* <div>
             <label style={labelStyle}>Organization Name</label>
             <input
               onChange={this.handleChange('organizationID')}
               value={this.state.organizationID}
               type="text" />
-          </div>
-          <div>
+          </div> */}
+          <TextField label="Description"
+            type="text"
+            value={this.state.desc}
+            onChange={this.handleChange('desc')} />
+          {/* <div>
             <label style={labelStyle}>Description</label>
             <input
               onChange={this.handleChange('desc')}
               value={this.state.desc}
               type="text" />
-          </div>
-          <div>
+          </div> */}
+          <TextField label="Start Date"
+            type="date"
+            value={this.state.start}
+            onChange={this.handleChange('start')} />
+          {/* <div>
             <label style={labelStyle}>Start Date</label>
             <input
               onChange={this.handleChange('start')}
               value={this.state.start}
               type="date" />
-          </div>
-          <div>
+          </div> */}
+          <TextField label="End Date"
+            type="date"
+            value={this.state.end}
+            onChange={this.handleChange('end')} />
+          {/* <div>
             <label style={labelStyle}>End Date</label>
             <input
               onChange={this.handleChange('end')}
               value={this.state.end}
               type="date" />
-          </div>
+          </div> */}
           <div>
             <button>Save</button>
             <Link to="/efforts">Cancel</Link>

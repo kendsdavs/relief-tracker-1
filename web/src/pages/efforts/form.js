@@ -45,7 +45,7 @@ const EffortForm = React.createClass({
       xhr.get('http://127.0.0.1:4000/efforts/' +
         this.props.params.id, {json: true}, (err, res, effort) => {
         if(err) return console.log(err.message)
-        this.setState(effort)
+        this.setState({effort})
       })
     }
   },

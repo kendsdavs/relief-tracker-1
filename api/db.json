@@ -1,11 +1,6 @@
 {
   "persons": [
     {
-      "id": 1,
-      "firstName": "Bob",
-      "lastName": "Marley"
-    },
-    {
       "id": 3,
       "firstName": "James",
       "lastName": "Bond"
@@ -27,12 +22,12 @@
       "id": 6
     },
     {
-      "firstName": "Joshua",
+      "firstName": "Josh",
       "lastName": "Bell",
       "email": "violinman@julliard.com",
       "phone": "230-3332222",
       "success": false,
-      "id": 7
+      "id": "7"
     },
     {
       "firstName": "Mike",
@@ -160,7 +155,17 @@
       ],
       "location": "",
       "success": false,
-      "id": "SytVh1ZGx"
+      "id": "SytVh1ZGx",
+      "members": [
+        {
+          "firstName": "Josh",
+          "lastName": "Bell",
+          "email": "violinman@julliard.com",
+          "phone": "230-3332222",
+          "success": false,
+          "id": "7"
+        }
+      ]
     },
     {
       "name": "Pay for College",
@@ -195,82 +200,18 @@
       "success": false,
       "id": "B1G1ayWGe"
     },
-    [
-      {
-        "name": "Foo",
-        "phase": "",
-        "organizationID": "",
-        "desc": "",
-        "start": "",
-        "end": "",
-        "locations": [
-          {
-            "id": "-1",
-            "name": "Choose"
-          },
-          {
-            "id": 1,
-            "name": "Gaborone, Botswana",
-            "lat": "-24.607676",
-            "lng": "25.903164"
-          },
-          {
-            "name": "Marseille, France",
-            "lat": "43.29",
-            "lng": "5.379733",
-            "success": false,
-            "id": "2"
-          },
-          {
-            "name": "Beirut, Lebanon",
-            "lat": "33.894982",
-            "lng": "35.501973",
-            "success": false,
-            "id": 3
-          }
-        ],
-        "location_id": "2",
-        "success": false
-      }
-    ],
-    [
-      {
-        "name": "Bar Baz",
-        "phase": "",
-        "organizationID": "blah",
-        "desc": "",
-        "start": "",
-        "end": "",
-        "locations": [
-          {
-            "id": "-1",
-            "name": "Choose"
-          },
-          {
-            "id": 1,
-            "name": "Gaborone, Botswana",
-            "lat": "-24.607676",
-            "lng": "25.903164"
-          },
-          {
-            "name": "Marseille, France",
-            "lat": "43.29",
-            "lng": "5.379733",
-            "success": false,
-            "id": "2"
-          },
-          {
-            "name": "Beirut, Lebanon",
-            "lat": "33.894982",
-            "lng": "35.501973",
-            "success": false,
-            "id": 3
-          }
-        ],
-        "location_id": "2",
-        "success": false
-      }
-    ]
+    {
+      "name": "Testing",
+      "phase": "",
+      "location_id": "1",
+      "id": "ryZdytGzl"
+    },
+    {
+      "name": "Testing2",
+      "phase": "in-progress",
+      "location_id": "2",
+      "id": 33
+    }
   ],
   "locations": [
     {

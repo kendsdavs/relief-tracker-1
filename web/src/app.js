@@ -29,14 +29,14 @@ const App = React.createClass({
           <Match pattern="/about" component={About} />
 
           <Match exactly pattern="/persons" component={Service(Persons, 'persons')} />
-          <Match pattern="/persons/:id/show" component={Service(Person)} />
+          <Match pattern="/persons/:id/show" component={Service(Person, 'persons')} />
           <Match exactly pattern="/persons/new" component={PersonForm} />
           <Match pattern="/persons/:id/edit" component={PersonForm} />
 
           <Match exactly pattern="/efforts" component={Service(Efforts, 'efforts')} />
           <Match pattern="/efforts/:id/show" component={Service(Effort, 'efforts')} />
           <Match exactly pattern="/efforts/new" component={Service(EffortForm, 'efforts')} />
-          <Match pattern="/efforts/:id/edit" component={Service(EffortForm), 'efforts'} />
+          <Match pattern="/efforts/:id/edit" component={Service(EffortForm, 'efforts')} />
 
           <Match exactly pattern="/locations" component={Service(Locations, 'locations')} />
           <Match pattern="/locations/:id/show" component={Location} />

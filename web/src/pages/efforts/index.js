@@ -22,7 +22,7 @@ const Efforts = React.createClass({
   },
   render() {
     const listEffort = effort =>
-      <li><Link to={`efforts/${effort.id}/show`}>
+      <li key={effort.id}><Link to={`efforts/${effort.id}/show`}>
         {effort.name}
       </Link></li>
     return (

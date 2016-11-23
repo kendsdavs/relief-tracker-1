@@ -20,7 +20,7 @@ const Service = (Component, model) => React.createClass({
   },
   put (id, doc, callback) {
     xhr.put(`${API_URL}/${model}/${id}`, {json:doc}, (e, r, b) => {
-      callback(e,b)
+      callback(e, b)
     })
   },
   remove (id, body, callback) {

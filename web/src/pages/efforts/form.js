@@ -8,14 +8,16 @@ const TextField = require('../../components/text-field')
 const EffortForm = React.createClass({
   getInitialState() {
     return {
-      name: '',
-      phase: '',
-      organizationID: '',
-      desc: '',
-      start: '',
-      end: '',
+      efforts: {
+        name: '',
+        phase: '',
+        organizationID: '',
+        desc: '',
+        start: '',
+        end: '',
+        location_id:''
+      },
       locations: [{ id: "-1", name:"Choose"}],
-      location_id:'',
       success: false
     }
   },
@@ -28,17 +30,22 @@ const EffortForm = React.createClass({
   },
   handleSubmit(e) {
     e.preventDefault()
-    let effort = [].concat(this.state)
-    delete effort.locations
+    // let effort = {}
+    // effort.name = this.state.name
+    // effort.description = this.state.description
+    // effort.phase = this.state.phase
+    // effort.location_id = this.state.location_id
+    // effort.startDate = this.state.startDate
+    // effort.id = this.state.id
 
-    if(this.state.id) {
-      this.props.put(effort, (err, effort) => {
+
+    if(this.state.effort.id) {
+      this.props.put(this.state.effort, (err, effort) => {
         if (err) return console.log(err.message)
         this.setState({success: true})
-
       })
     } else {
-      this.props.post(effort, (err, effort) => {
+      this.props.post(this.state.effort, (err, effort) => {
         if (err) return console.log(err.message)
         this.setState({success: true})
       })
@@ -57,9 +64,11 @@ const EffortForm = React.createClass({
       })
   },
   render() {
-    const locationList = location =>
-      <option value={location.id}>{location.name}</option>
     const formState = this.state.id ? 'Edit' : 'New'
+    const locationList = location =>
+      <option key={location.id} value={location.id}>{location.name}</option>
+
+  console.log(formState, this.state.id)
     return (
       <div className="container">
         { this.state.success && this.state.id ?
@@ -72,7 +81,7 @@ const EffortForm = React.createClass({
             <label style={labelStyle}>Effort Name</label>
             <input
               onChange={this.handleChange('name')}
-              value={this.state.name}
+              value={this.state.effort.name}
               type="text" />
           </div>
           <div>

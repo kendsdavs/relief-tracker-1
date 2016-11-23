@@ -1,5 +1,5 @@
 const React = require('react')
-const xhr = require('xhr')
+//const xhr = require('xhr')
 const {Link} = require('react-router')
 
 const Locations = React.createClass({

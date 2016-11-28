@@ -13,26 +13,23 @@ const Effort = React.createClass({
     };
   },
   componentDidMount() {
-    this.props.get(this.props.params.id, (e, effort) => {
+    this.props.allDocs('persons', (e, persons) => {
+      if(e) return console.log(e.message)
+      this.setState({persons})
+    })
+
+    this.props.get('efforts', this.props.params.id, (e, effort, body) => {
       if(e) return console.log(e.message)
       if (!effort.members) effort.members = []
       this.setState({effort})
     })
-    xhr.get('http://127.0.0.1:4000/persons', { json: true}, (err, res, body) => {
-      if(err) return console.log(err.message)
-      this.setState({persons: [].concat(this.state.persons, body)})
-    })
-    // this.props.allDocs((e, res, persons) => {
-    //   if(e) return console.log(e.message)
-    //   this.setState({persons: [].concat(persons)})
-    // })
   },
   addMember (person) {
     return (e) => {
       let members = this.state.effort.members.filter(member =>
         member.id !== person.id)
       let effort = {...this.state.effort}
-      effort.members = [person, ...members]
+      effort.members = [person, ...members] //spread operator
       this.setState({effort})
     }
   },
@@ -47,7 +44,7 @@ const Effort = React.createClass({
   },
   updateTeam (e) {
     e.preventDefault()
-    this.props.put(this.state.effort.id, this.state.effort, (err, res) => {
+    this.props.put('efforts',this.state.effort.id, this.state.effort, (err, res, body) => {
       if (err) return console.log(err.message)
       alert('Successfully updated team!')
     })
@@ -55,9 +52,7 @@ const Effort = React.createClass({
   handleRemove(e) {
     e.preventDefault()
     if (confirm('Are you sure?') ) {
-      xhr.del('http://127.0.0.1:4000/efforts/' + this.state.effort.id, {
-        json: this.state.effort
-      }, (err, res, body) => {
+      this.props.remove('efforts', this.state.effort, (err, response, body) => {
         if (err) return console.log(err.message)
         this.setState({removed: true})
       })

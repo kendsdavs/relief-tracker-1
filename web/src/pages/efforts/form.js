@@ -8,15 +8,13 @@ const TextField = require('../../components/text-field')
 const EffortForm = React.createClass({
   getInitialState() {
     return {
-      efforts: {
-        name: '',
-        phase: '',
-        organizationID: '',
-        desc: '',
-        start: '',
-        end: '',
-        location_id:''
-      },
+      name: '',
+      phase: '',
+      organizationID: '',
+      desc: '',
+      start: '',
+      end: '',
+      location_id:'',
       locations: [{ id: "-1", name:"Choose"}],
       success: false
     }
@@ -24,7 +22,7 @@ const EffortForm = React.createClass({
   handleChange(field) {
     return e => {
       const newState = {}
-      newState[field] = e.target.value
+      newState[field]= e.target.value
       this.setState(newState)
     }
   },
@@ -39,13 +37,14 @@ const EffortForm = React.createClass({
     // effort.id = this.state.id
 
 
-    if(this.state.effort.id) {
-      this.props.put(this.state.effort, (err, effort) => {
+    if(this.state.id) {
+      this.props.put("efforts", this.state.id, this.state, (err, effort) => {
         if (err) return console.log(err.message)
         this.setState({success: true})
       })
     } else {
-      this.props.post(this.state.effort, (err, effort) => {
+      console.log("this is the this.state", this.state)
+      this.props.post("efforts", this.state, (err, effort) => {
         if (err) return console.log(err.message)
         this.setState({success: true})
       })
@@ -53,22 +52,25 @@ const EffortForm = React.createClass({
   },
   componentDidMount() {
     if (this.props.params.id) {
-      this.props.get(this.props.params.id, (e, effort) => {
+      this.props.get("efforts", this.props.params.id, (e, effort) => {
         if(e) return console.log(e.message)
         this.setState(effort)
       })
     }
-      xhr.get('http://127.0.0.1:4000/locations', { json: true}, (err, res, body) => {
+      this.props.allDocs("locations", (err, body) => {
         if(err) return console.log(err.message)
-        this.setState({locations: [].concat(this.state.locations, body)})
+        this.setState({locations: body})
+
       })
+      // xhr.get('http://127.0.0.1:4000/locations', { json: true}, (err, res, body) => {
+      //   if(err) return console.log(err.message)
+      //   this.setState({locations: [].concat(this.state.locations, body)})
+      // })
   },
   render() {
     const formState = this.state.id ? 'Edit' : 'New'
     const locationList = location =>
       <option key={location.id} value={location.id}>{location.name}</option>
-
-  console.log(formState, this.state.id)
     return (
       <div className="container">
         { this.state.success && this.state.id ?
@@ -81,7 +83,7 @@ const EffortForm = React.createClass({
             <label style={labelStyle}>Effort Name</label>
             <input
               onChange={this.handleChange('name')}
-              value={this.state.effort.name}
+              value={this.state.name}
               type="text" />
           </div>
           <div>

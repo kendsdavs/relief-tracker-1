@@ -15,27 +15,29 @@
     },
     {
       "firstName": "Laurel",
-      "lastName": "Michelle",
-      "email": "laurel@gmail.com",
-      "phone": "433-444-3322",
+      "lastName": "Smith-Wieck",
+      "email": "smithy@gmail.com",
+      "phone": "3033323321",
       "success": false,
-      "id": 6
+      "id": "BJRK8COMx"
     },
     {
-      "firstName": "Josh",
-      "lastName": "Bell",
-      "email": "violinman@julliard.com",
-      "phone": "230-3332222",
+      "person": {},
       "success": false,
-      "id": "7"
+      "firstName": "Sammy",
+      "lastName": "Longfellow",
+      "email": "thelongest@lsu.edu",
+      "phone": "334-556-4454",
+      "id": "r1VsP0OMx"
     },
     {
-      "firstName": "Mike",
-      "lastName": "Jackson",
-      "email": "mike@aol.com",
-      "phone": "3330222",
+      "person": {},
       "success": false,
-      "id": 8
+      "firstName": "Ellyn",
+      "lastName": "Finnley",
+      "email": "goddess@aol.com",
+      "phone": "334-223-1323",
+      "id": "HJW5ygYGl"
     }
   ],
   "efforts": [
@@ -89,7 +91,25 @@
         }
       ],
       "success": false,
-      "id": "ryKBNy-fg"
+      "id": "ryKBNy-fg",
+      "members": [
+        {
+          "firstName": "Josh",
+          "lastName": "Bell",
+          "email": "violinman@julliard.com",
+          "phone": "230-3332222",
+          "success": false,
+          "id": "7"
+        },
+        {
+          "firstName": "Laurel",
+          "lastName": "Michelle",
+          "email": "laurel@gmail.com",
+          "phone": "433-444-3322",
+          "success": false,
+          "id": 6
+        }
+      ]
     },
     {
       "name": "Glasses for Children",
@@ -125,13 +145,18 @@
       "id": "Hyjdc1-fl"
     },
     {
-      "name": "Meal for the Hungry",
-      "phase": "completed",
-      "organizationID": "Girls Scouts of America",
-      "desc": "Collecting money to provide meals in Africa",
+      "name": "Coats for the Really Cold",
+      "phase": "",
+      "organizationID": "1st Church",
+      "desc": "",
       "start": "",
       "end": "",
+      "location_id": "",
       "locations": [
+        {
+          "id": "-1",
+          "name": "Choose"
+        },
         {
           "id": 1,
           "name": "Gaborone, Botswana",
@@ -153,64 +178,18 @@
           "id": 3
         }
       ],
-      "location": "",
       "success": false,
-      "id": "SytVh1ZGx",
+      "id": "ryZNpxKfx",
       "members": [
         {
-          "firstName": "Josh",
-          "lastName": "Bell",
-          "email": "violinman@julliard.com",
-          "phone": "230-3332222",
+          "firstName": "Sarah",
+          "lastName": "Henry",
+          "email": "",
+          "phone": "",
           "success": false,
-          "id": "7"
+          "id": "4"
         }
       ]
-    },
-    {
-      "name": "Pay for College",
-      "phase": "",
-      "organizationID": "Fanny Mae",
-      "desc": "Provide jobs to pay for college tuition",
-      "start": "",
-      "end": "",
-      "locations": [
-        {
-          "id": 1,
-          "name": "Gaborone, Botswana",
-          "lat": "-24.607676",
-          "lng": "25.903164"
-        },
-        {
-          "name": "Marseille, France",
-          "lat": "43.29",
-          "lng": "5.379733",
-          "success": false,
-          "id": "2"
-        },
-        {
-          "name": "Beirut, Lebanon",
-          "lat": "33.894982",
-          "lng": "35.501973",
-          "success": false,
-          "id": 3
-        }
-      ],
-      "location": "Beirut, Lebanon",
-      "success": false,
-      "id": "B1G1ayWGe"
-    },
-    {
-      "name": "Testing",
-      "phase": "",
-      "location_id": "1",
-      "id": "ryZdytGzl"
-    },
-    {
-      "name": "Testing2",
-      "phase": "in-progress",
-      "location_id": "2",
-      "id": 33
     }
   ],
   "locations": [

@@ -9,14 +9,18 @@ const Location = React.createClass({
     }
   },
   componentDidMount() {
-    xhr.get('http://127.0.0.1:4000/locations/' +
-      this.props.params.id, {
-      json: true
-    }, (err, res, location) => {
+    this.props.get("locations", this.props.params.id, (err, location, body) => {
       if(err) return console.log(err.message)
       this.setState({location})
-    }
-   )
+    })
+  //   xhr.get('http://127.0.0.1:4000/locations/' +
+  //     this.props.params.id, {
+  //     json: true
+  //   }, (err, res, location) => {
+  //     if(err) return console.log(err.message)
+  //     this.setState({location})
+  //   }
+  //  )
  },
   render() {
     return (

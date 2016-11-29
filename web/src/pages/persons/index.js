@@ -9,7 +9,7 @@ const Persons = React.createClass({
     }
   },
   componentDidMount() {
-    this.props.allDocs((err, persons) => {
+    this.props.allDocs('persons', (err, persons) => {
       if (err) return console.log(err.message)
       this.setState({persons})
     })

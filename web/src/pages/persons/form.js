@@ -6,11 +6,12 @@ const labelStyle = { display: 'block'}
 const PersonForm = React.createClass({
   getInitialState() {
     return {
-      firstName: '',
-      lastName: '',
-      email: '',
-      phone: '',
-      success: false
+        // firstName: '',
+        // lastName: '',
+        // email: '',
+        // phone: '',
+        person: {},
+        success: false
     }
   },
   handleChange(field) {
@@ -23,34 +24,39 @@ const PersonForm = React.createClass({
   handleSubmit(e) {
     e.preventDefault()
     if (this.state.id) {
-      xhr.put('http://127.0.0.1:4000/persons/' + this.state.id, {
-        json: this.state
-      }, (err, response, body) => {
-        if (err) return console.log(err.message)
+      this.props.put('persons', this.state.id, this.state, (err, res, body) => {
+        if(err) return console.log(err.message)
         this.setState({success: true})
       })
     } else {
-      xhr.post('http://127.0.0.1:4000/persons', {
-        json: this.state
-      }, (err, response, body) => {
-        if (err) return console.log(err.message)
+      this.props.post('persons', this.state, (err, res, body) => {
+        if(err) return console.log(err.message)
         this.setState({success: true})
       })
+      // xhr.post('http://127.0.0.1:4000/persons', {
+      //   json: this.state
+      // }, (err, response, body) => {
+      //   if (err) return console.log(err.message)
+      //   this.setState({success: true})
+      // })
     }
 
   },
   componentDidMount() {
     if (this.props.params.id) {
-      xhr.get('http://127.0.0.1:4000/persons/' +
-      this.props.params.id, {json: true}, (err, response, person) => {
+      this.props.get('persons', this.props.params.id, (err, person) => {
         if (err) return console.log(err.message)
         this.setState(person)
       })
+      // xhr.get('http://127.0.0.1:4000/persons/' +
+      // this.props.params.id, {json: true}, (err, response, person) => {
+      //   if (err) return console.log(err.message)
+      //   this.setState(person)
+      // })
     }
-
   },
   render() {
-    const formState = this.state.id ? 'Edit' : 'New'
+    const formState = this.props.params.id ? 'Edit' : 'New'
     return (
       <div className="container">
         { this.state.success && this.state.id ?

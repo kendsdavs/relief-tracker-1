@@ -30,18 +30,18 @@ const App = React.createClass({
 
           <Match exactly pattern="/persons" component={Service(Persons)} />
           <Match pattern="/persons/:id/show" component={Service(Person)} />
-          <Match exactly pattern="/persons/new" component={PersonForm} />
-          <Match pattern="/persons/:id/edit" component={PersonForm} />
+          <Match exactly pattern="/persons/new" component={Service(PersonForm)} />
+          <Match pattern="/persons/:id/edit" component={Service(PersonForm)} />
 
-          <Match exactly pattern="/efforts" component={Efforts} />
-          <Match pattern="/efforts/:id/show" component={Effort} />
-          <Match exactly pattern="/efforts/new" component={EffortForm} />
-          <Match pattern="/efforts/:id/edit" component={EffortForm} />
+          <Match exactly pattern="/efforts" component={Service(Efforts)} />
+          <Match pattern="/efforts/:id/show" component={Service(Effort)} />
+          <Match exactly pattern="/efforts/new" component={Service(EffortForm)} />
+          <Match pattern="/efforts/:id/edit" component={Service(EffortForm)} />
 
-          <Match exactly pattern="/locations" component={Locations} />
-          <Match pattern="/locations/:id/show" component={Location} />
-          <Match exactly pattern="/locations/new" component={LocationForm} />
-          <Match pattern="/locations/:id/edit" component={LocationForm} />
+          <Match exactly pattern="/locations" component={Service(Locations)} />
+          <Match pattern="/locations/:id/show" component={Service(Location)} />
+          <Match exactly pattern="/locations/new" component={Service(LocationForm)} />
+          <Match pattern="/locations/:id/edit" component={Service(LocationForm)} />
           <Miss component={NoMatch} />
         </div>
       </BrowserRouter>

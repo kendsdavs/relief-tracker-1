@@ -1,5 +1,5 @@
 const React = require('react')
-const xhr = require('xhr')
+//const xhr = require('xhr')
 const {Link} = require('react-router')
 
 const Locations = React.createClass({
@@ -9,13 +9,19 @@ const Locations = React.createClass({
     }
   },
   componentDidMount() {
-    xhr.get("http://127.0.0.1:4000/locations", {
-      json: true
-    }, (err, res, locations) => {
-      if (err) return console.log(err.message)
-      this.setState({locations})
-    })
-  },
+  //   xhr.get("http://127.0.0.1:4000/locations", {
+  //     json: true
+  //   }, (err, res, locations) => {
+  //     if (err) return console.log(err.message)
+  //     this.setState({locations})
+  //   })
+  // },
+  this.props.allDocs("locations", (err, locations) => {
+    if (err) return console.log(err.message)
+    this.setState({locations})
+  })
+},
+  
   render() {
     const listLocations = location =>
       <li key={location.id}><Link to={`/locations/${location.id}/show`}>

@@ -21,30 +21,42 @@ const LocationForm = React.createClass({
   handleSubmit(e) {
     e.preventDefault()
     if (this.state.id) {
-      xhr.put("http://127.0.0.1:4000/locations/" + this.state.id, {
-        json: this.state
-      }, (err, res, body) => {
-        if (err) return console.log(err.message)
-        this.setState({success: true})
-      } )
-    } else {
-      xhr.post("http://127.0.0.1:4000/locations", {
-        json: this.state
-      }, (err, res, body) => {
+      this.props.put("locations", this.state.id, this.state, (err, effort) => {
         if (err) return console.log(err.message)
         this.setState({success: true})
       })
+      // xhr.put("http://127.0.0.1:4000/locations/" + this.state.id, {
+      //   json: this.state
+      // }, (err, res, body) => {
+      //   if (err) return console.log(err.message)
+      //   this.setState({success: true})
+      // } )
+    } else {
+      this.props.post("locations", this.state, (err, effort) => {
+        if (err) return console.log(err.message)
+        this.setState({success: true})
+      })
+      // xhr.post("http://127.0.0.1:4000/locations", {
+      //   json: this.state
+      // }, (err, res, body) => {
+      //   if (err) return console.log(err.message)
+      //   this.setState({success: true})
+      // })
     }
   },
   componentDidMount() {
     if (this.props.params.id) {
-      xhr.get("http://127.0.0.1:4000/locations/" +
-        this.props.params.id, {
-        json: true
-      }, (err, res, location) => {
-        if(err) return console.log(err.message)
-        this.setState(location)
+      this.props.get("locations", this.props.params.id, (e, effort) => {
+        if(e) return console.log(e.message)
+        this.setState(effort)
       })
+      // xhr.get("http://127.0.0.1:4000/locations/" +
+      //   this.props.params.id, {
+      //   json: true
+      // }, (err, res, location) => {
+      //   if(err) return console.log(err.message)
+      //   this.setState(location)
+      // })
     }
   },
   render() {

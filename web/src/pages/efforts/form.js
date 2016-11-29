@@ -43,7 +43,7 @@ const EffortForm = React.createClass({
         this.setState({success: true})
       })
     } else {
-      console.log("this is the this.state", this.state)
+      //console.log("this is the this.state", this.state)
       this.props.post("efforts", this.state, (err, effort) => {
         if (err) return console.log(err.message)
         this.setState({success: true})

@@ -62,29 +62,53 @@ const Effort = React.createClass({
     return (
       <div className="container">
         {this.state.removed ? <Redirect to="/efforts" /> : null}
-        <h3>{this.state.effort.name}</h3>
+        <div className="container">
+          <div className="page-header">
+            <h1>{this.state.effort.name}</h1>
+          </div>
+        </div>
         <div>
           <h2>Add People to Team</h2>
-            <ul>
-
-              {this.state.persons.map(p =>
-                <li key={p.id}>
-                  {p.firstName + ' ' + p.lastName}
-                  <button onClick={this.addMember(p)}>Add</button>
-                </li>
-              )}
-            </ul>
+           {this.state.persons.map(p =>
+             <article className="mw5 dib bg-white br3 pa3 pa4-ns ma3 ba b--black-10">
+              <div className="tc">
+                <img src="http://tachyons.io/img/avatar_1.jpg" className="br-100 h4 w4 dib ba b--black-05 pa2" title="Kitty staring at you" />
+                <h1 className="f3 mb2">{p.firstName + p.lastName}</h1>
+                <button onClick={this.addMember(p)}>Add</button>
+              </div>
+            </article>
+           )}
           </div>
           <div>
             <h3>Team</h3>
-              <ul>
                 {this.state.effort.members.map(m =>
-                  <li key={m.id}>
-                    {m.firstName + ' ' + m.lastName}
-                    <button onClick={this.removeMember(m)}>Remove</button>
-                  </li>
+                  <article className="dt w-50 bb b--black-05 pb2 mt2" href="#0">
+                    <div className="dtc w2 w3-ns v-mid">
+                      <img src="http://tachyons.io/img/avatar_1.jpg" className="ba b--black-10 db br2 w2 w3-ns h2 h3-ns" />
+                    </div>
+                    <div className="dtc v-mid pl2 pa2">
+                      <h1 className="f6 f5-ns fw6 lh-title black mv0">{m.firstName + m.lastName}</h1>
+                      <h2 className="f6 fw4 mt0 mb0 black-60">{m.email}</h2>
+                    </div>
+                    <div className="dtc v-mid">
+                      <form className="w-100 tr">
+                        <button className="f6 button-reset bg-white ba b--black-10 dim pointer pv1 black-60" onClick={this.removeMember(m)}>Remove</button>
+                      </form>
+                    </div>
+                  </article>
+
+                //   <article className="mw5 dib bg-white br3 pa3 pa4-ns ma3 ba b--black-10">
+                //    <div className="tc">
+                //      <img src="http://tachyons.io/img/avatar_1.jpg" className="br-100 h4 w4 dib ba b--black-05 pa2" title="Kitty staring at you" />
+                //      <h1 className="f3 mb2">{m.firstName + m.lastName}</h1>
+                //      <button onClick={this.removeMember(m)}>Remove</button>
+                //    </div>
+                //  </article>
                 )}
-              </ul>
+                {/* <li key={m.id}>
+                  {m.firstName + ' ' + m.lastName}
+                  <button onClick={this.removeMember(m)}>Remove</button>
+                </li> */}
           </div>
           <div>
             <hr />

@@ -1,6 +1,8 @@
 const React = require('react')
 const {Link, Redirect} = require('react-router')
 const xhr = require('xhr')
+const TextField = require('../../components/text-field')
+
 
 const LocationForm = React.createClass({
   getInitialState() {
@@ -67,31 +69,53 @@ const LocationForm = React.createClass({
           <Redirect to={`/locations/${this.state.id}/show`} /> : null}
         {this.state.success && !this.state.id ?
           <Redirect to="/locations" /> : null}
-        <h1>{formState} Location Form</h1>
-        <form onSubmit={this.handleSubmit}>
-          <div>
+        <div className="page-header">
+          <h1 className="col-sm-offset-1">{formState} Location Form</h1>
+        </div>
+        <form className="form-horizontal" onSubmit={this.handleSubmit}>
+          <TextField label="Relief Location"
+            type="text"
+            value={this.state.name}
+            onChange={this.handleChange('name')} />
+          {/* <div>
             <label>Location</label>
             <input
               onChange={this.handleChange('name')}
               value={this.state.name}
               type="text" />
-          </div>
-          <div>
+          </div> */}
+          <TextField label="Latitude"
+            type="text"
+            value={this.state.lat}
+            onChange={this.handleChange('lat')} />
+          {/* <div>
             <label>Latitude</label>
             <input
               onChange={this.handleChange('lat')}
               value={this.state.lat}
               type="text" />
-          </div>
-          <div>
+          </div> */}
+          <TextField label="Longitude"
+            type="text"
+            value={this.state.lng}
+            onChange={this.handleChange('lng')} />
+          {/* <div>
             <label>Longitude</label>
             <input
               onChange={this.handleChange('lng')}
               value={this.state.lng}
               type="text" />
+          </div> */}
+          <div>
+            <p>
+              <button className="btn btn-primary col-sm-offset-1 col-sm-2">Save</button>
+            </p>
+            <p>
+              <Link className="btn btn-default col-sm-offset-1 col-sm-2" to="/locations">Cancel</Link>
+            </p>
           </div>
-          <button>Add</button>
-          <Link to="/locations">Cancel</Link>
+          {/* <button>Add</button>
+          <Link to="/locations">Cancel</Link> */}
         </form>
       </div>
     )

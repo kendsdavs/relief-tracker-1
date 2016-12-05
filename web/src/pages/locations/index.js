@@ -21,22 +21,27 @@ const Locations = React.createClass({
     this.setState({locations})
   })
 },
-  
+
   render() {
     const listLocations = location =>
-      <li key={location.id}><Link to={`/locations/${location.id}/show`}>
+      <li key={location.id}><Link to={`/locations/${location.id}/show`}
+      className="list-group-item">
       {location.name}
         </Link>
       </li>
     return (
       <div className="container">
-        <h1>Locations</h1>
-        <ul>
-          {this.state.locations.map(listLocations)}
-        </ul>
-        <Link to="/">Home</Link>
-        ||
-        <Link to="/locations/new">Add Location</Link>
+        <div className="page-header">
+          <h1>Locations</h1>
+        </div>
+        <div className="list-group">
+          <ul className="list">
+            {this.state.locations.map(listLocations)}
+          </ul>
+        </div>
+        <Link to="/" className="btn btn-primary">Home</Link>
+
+        <Link to="/locations/new" className="btn btn-primary">Add Location</Link>
       </div>
     )
   }

@@ -23,18 +23,22 @@ const Persons = React.createClass({
   render() {
     //use tag template in Link
     const listPerson = person =>
-      <li key={person.id}><Link to={`/persons/${person.id}/show`}>
+      <li key={person.id}><Link to={`/persons/${person.id}/show`} className="list-group-item">
         {person.firstName + ' ' + person.lastName}
         </Link>
       </li>
     return (
       <div className="container">
-        <h1>Persons</h1>
-        <Link to="/persons/new">NewPerson</Link>
-        <ul>
-          {this.state.persons.map(listPerson)}
-        </ul>
-        <Link to="/">Home</Link>
+        <div className="page-header">
+          <h1>Persons</h1>
+        </div>
+        <div className="list-group">
+          <ul className="list">
+            {this.state.persons.map(listPerson)}
+          </ul>
+        </div>
+        <Link to="/" className="btn btn-primary">Home</Link>
+        <Link to="/persons/new" className="btn btn-primary">NewPerson</Link>
       </div>
     )
   }

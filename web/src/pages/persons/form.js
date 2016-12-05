@@ -1,6 +1,7 @@
 const React = require('react')
 const {Link, Redirect} = require('react-router')
 const xhr = require('xhr')
+const TextField = require('../../components/text-field')
 
 const labelStyle = { display: 'block'}
 const PersonForm = React.createClass({
@@ -63,39 +64,65 @@ const PersonForm = React.createClass({
           <Redirect to={`/persons/${this.state.id}/show` }/> : null }
         { this.state.success && !this.state.id ?
           <Redirect to={`/persons`} /> : null }
-        <h1>{formState} Person Form</h1>
-        <form onSubmit={this.handleSubmit}>
-          <div>
+        <div className="page-header">
+          <h1 className="col-sm-offset-1">{formState} Person Form</h1>
+        </div>
+        <form className="form-horizontal" onSubmit={this.handleSubmit}>
+          <TextField label="First Name"
+            type="text"
+            value={this.state.firstName}
+            onChange={this.handleChange('firstName')} />
+          {/* <div>
             <label style={labelStyle}>First Name</label>
             <input
               onChange={this.handleChange('firstName')}
               value={this.state.firstName}
               type="text" />
-          </div>
-          <div>
+          </div> */}
+          <TextField label="Last Name"
+            type="text"
+            value={this.state.lastName}
+            onChange={this.handleChange('lastName')} />
+          {/* <div>
             <label style={labelStyle}>Last Name</label>
             <input
               className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
               onChange={this.handleChange('lastName')}
               value={this.state.lastName}
               type="text" />
-          </div>
-          <div>
+          </div> */}
+          <TextField label="Email"
+            type="email"
+            value={this.state.email}
+            onChange={this.handleChange('email')} />
+          {/* <div>
             <label style={labelStyle}>E-mail</label>
             <input
               onChange={this.handleChange('email')}
               value={this.state.email}
               type="email" />
-          </div>
-          <div>
+          </div> */}
+          <TextField label="Phone Number"
+            type="text"
+            value={this.state.phone}
+            onChange={this.handleChange('phone')} />
+          {/* <div>
             <label style={labelStyle}>Phone</label>
             <input
               onChange={this.handleChange('phone')}
               value={this.state.phone}
               type="text" />
+          </div> */}
+          <div>
+            <p>
+              <button className="btn btn-primary col-sm-offset-1 col-sm-2">Save</button>
+            </p>
+            <p>
+              <Link className="btn btn-default col-sm-offset-1 col-sm-2" to="/persons">Cancel</Link>
+            </p>
           </div>
-            <button>Save</button>
-            <Link to="/persons">Cancel</Link>
+            {/* <button>Save</button>
+            <Link to="/persons">Cancel</Link> */}
         </form>
       </div>
     )

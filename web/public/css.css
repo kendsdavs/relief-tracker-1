@@ -1,0 +1,18 @@
+body {
+  padding-bottom: 40px;
+  color: #5a5a5a;
+}
+
+/* Main areas CONTENT
+-------------------------------------------------- */
+
+/* Center align the text within the three columns below the header */
+.main .col-lg-4 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.main .col-lg-4 p {
+  margin-right: 10px;
+  margin-left: 10px;
+}
